@@ -74,8 +74,6 @@ namespace Console_Snake
                 currentPos.direction = Direction.down;
             }
 
-            
-
             switch (currentPos.direction)
             {
                 case Direction.right:
@@ -94,11 +92,13 @@ namespace Console_Snake
                     break;
             }
 
-            if (currentPos.snakeYPos  < 0 || currentPos.snakeYPos > Console.WindowHeight
-               || currentPos.snakeXPos  < 0 || currentPos.snakeXPos > Console.WindowWidth)
+            if (currentPos.snakeYPos  < 0 || currentPos.snakeYPos > yAxisMap
+               || currentPos.snakeXPos  < 0 || currentPos.snakeXPos > xAxisMap)
             {
                 GameOver();
             }
+
+            
             for (int i = 0; i < positions.Count ; i++)
             {
                 if (currentPos.snakeXPos == positions.ElementAt(i).snakeXPos && currentPos.snakeYPos == positions.ElementAt(i).snakeYPos)
@@ -112,6 +112,7 @@ namespace Console_Snake
                 snakeCount++;
                 currentFood.spawned = false;
                 score++;
+                gameSpeed--;
                 Console.Title = "Score: " + score;
 
             }
